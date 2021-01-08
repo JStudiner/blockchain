@@ -1,6 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPeers, removePeer, addBlock, setConnect } from '../actions';
+import {
+	fetchPeers,
+	removePeer,
+	addBlock,
+	setConnect,
+	checkConnect,
+} from '../actions';
 import BlockChain from './BlockChain';
 import './PeerList.css';
 class PeerList extends React.Component {
@@ -17,7 +23,6 @@ class PeerList extends React.Component {
 					<i
 						className="right floated linkify icon small"
 						onClick={() => {
-							console.log('hello');
 							this.props.setConnect(peer);
 						}}
 					/>
@@ -64,4 +69,5 @@ export default connect(mapStateToProps, {
 	removePeer,
 	addBlock,
 	setConnect,
+	checkConnect,
 })(PeerList);

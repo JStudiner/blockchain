@@ -40,7 +40,7 @@ export const addPeer = () => {
 	count++;
 	return {
 		type: 'ADD_PEER',
-		payload: { name: namesToChoose[count - 1], id: count },
+		payload: { name: namesToChoose[count - 1], id: `peer${count}` },
 	};
 };
 export const removePeer = (peer) => {
@@ -49,18 +49,25 @@ export const removePeer = (peer) => {
 		payload: peer,
 	};
 };
-export const addBlock = (blockCount, data) => {
+export const addBlock = (blockId, peer, data) => {
 	return {
 		type: 'ADD_BLOCK',
 		payload: {
-			count: blockCount,
-			data: data,
+			blockId,
+			peer,
+			data,
 		},
 	};
 };
 
+export const checkConnect = (peerId) => {
+	return {
+		type: 'CHECK_CONNECT',
+		payload: peerId,
+	};
+};
+
 export const setConnect = (peer) => {
-	console.log('fuck');
 	return {
 		type: 'CONNECT',
 		payload: {
@@ -72,5 +79,25 @@ export const setConnect = (peer) => {
 export const reset = () => {
 	return {
 		type: 'RESET',
+	};
+};
+
+export const change = (peer, changedBlock, blockData) => {
+	return {
+		type: 'CHANGE_BLOCK',
+		payload: {
+			changedBlock,
+			peer,
+			blockData,
+		},
+	};
+};
+
+export const checkChain = (peerId) => {
+	return {
+		type: 'CHECK_CHAIN',
+		payload: {
+			peerId,
+		},
 	};
 };
