@@ -2,24 +2,23 @@ import React from 'react';
 import '../Modal.css';
 class InfoPage extends React.Component {
 	render() {
-		const style = {};
 		return (
 			<div className="ui container block-comps">
-				<div class="ui divided list">
-					<div class="item">
+				<div className="ui divided list">
+					<div className="item">
 						<h3 className="header">Peer system</h3>
-						<div class="ui list">
-							<div class="item">
-								<i class="user circle icon"></i>
-								<div class="content">
+						<div className="ui list">
+							<div className="item">
+								<i className="user circle icon"></i>
+								<div className="content">
 									<div>
 										Click the "Add a Peer" button to add a peer to the network.
 									</div>
 								</div>
 							</div>
-							<div class="item">
-								<i class="linkify icon"></i>
-								<div class="content">
+							<div className="item">
+								<i className="linkify icon"></i>
+								<div className="content">
 									<div>
 										Each peer will have a link icon. Press this to toggle
 										linking the peer to the blockchain. A green bottom border
@@ -28,33 +27,39 @@ class InfoPage extends React.Component {
 									</div>
 								</div>
 							</div>
-							<div class="item">
-								<i class="close icon"></i>
-								<div class="content">
+							<div className="item">
+								<i className="close icon"></i>
+								<div className="content">
 									<div>Click the x to delete a peer from the network.</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="item">
-						<h3 className="header">Block</h3>
-						<div class="ui list">
-							<div class="item">
-								<i class="cube icon"></i>
-								<div class="content">
+					<div className="item">
+						<h3 classNameName="header">Block</h3>
+						<div className="ui list">
+							<div className="item">
+								<i className="cube icon"></i>
+								<div className="content">
 									Clicking the "Add a Block" button will add a block to the
 									blockchain. Each peer that is connected will displayed a copy
 									of the blockchain.
 								</div>
 							</div>
 							<div
-								class="item"
+								className="item"
 								style={{ display: 'flex', flexDirection: 'row' }}>
-								<div style={{ display: 'flex', flexDirection: 'column' }}>
-									<i class="cube icon" style={{ color: 'red' }}></i>
-									<i class="cube icon" style={{ color: 'green' }}></i>
+								<div
+									style={{
+										marginleft: '0px',
+										marginRight: '5px',
+										display: 'flex',
+										flexDirection: 'column',
+									}}>
+									<i className="cube icon" style={{ color: 'red' }}></i>
+									<i className="cube icon" style={{ color: 'green' }}></i>
 								</div>
-								<div class="content">
+								<div className="content">
 									If the block is valid, (The data hasn't been changed and
 									previous hash matches the hash of the block directly before),
 									the block will be green. If these conditions are not met the
@@ -63,46 +68,46 @@ class InfoPage extends React.Component {
 							</div>
 						</div>
 					</div>
-					<div class="item">
+					<div className="item">
 						<h3 style={{ marginBottom: '0px' }}>Block Info</h3>
-						<div class="ui list">
-							<div class="item">
-								<div class="content">
-									Click a <i class="cube icon"></i> icon to see information
+						<div className="ui list">
+							<div className="item">
+								<div className="content">
+									Click a <i className="cube icon"></i> icon to see information
 									about the block you clicked
 								</div>
 							</div>
-							<div class="item">
-								<div class="header">Hash</div>
-								<div class="content">
+							<div className="item">
+								<div className="header">Hash</div>
+								<div className="content">
 									The hash is calculated with the SHA256 algorithim and uses the
 									data, index, previous hash and timestamp.
 								</div>
 							</div>
-							<div class="item">
-								<div class="header">Previous Hash</div>
-								<div class="content">
+							<div className="item">
+								<div className="header">Previous Hash</div>
+								<div className="content">
 									The previous hash is the hash of the block directly before the
 									current block in the blockchain.
 								</div>
 							</div>
-							<div class="item">
-								<div class="header">Data</div>
-								<div class="content">
+							<div className="item">
+								<div className="header">Data</div>
+								<div className="content">
 									The data of each block can be changed by editing the text and
-									clicking the <button class="ui tiny button">Submit</button>{' '}
-									button. Changing the data will make the current block and all
-									blocks after invalid. The blocks will indicated this by
-									turning red.
+									clicking the{' '}
+									<button className="ui tiny button">Submit</button> button.
+									Changing the data will make the current block and all blocks
+									after invalid. The blocks will indicated this by turning red.
 								</div>
 							</div>
-							<div class="item">
-								<div class="header">Mining</div>
-								<div class="content">
+							<div className="item">
+								<div className="header">Mining</div>
+								<div className="content">
 									When a block is invalid the{' '}
-									<button class="ui tiny positive button">Mine</button> button
-									will turn red{' '}
-									<button class="ui tiny negative button">Mine</button>,
+									<button className="ui tiny positive button">Mine</button>{' '}
+									button will turn red{' '}
+									<button className="ui tiny negative button">Mine</button>,
 									indicating the block must be mined. The blocks must be mined
 									in order to become valid.
 								</div>
