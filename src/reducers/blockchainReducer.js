@@ -86,6 +86,26 @@ const blockchainReducer = (state = [], action) => {
 			return state.map((block, index) => {
 				return { ...block, valid: newArray[index] };
 			});
+		case 'MINE':
+			id = state.indexOf(action.block);
+			if (id !== 0) {
+				state = [
+					...state.slice(0, id),
+					{
+						...state[id],
+						previousHash: state[id - 1].hash,
+					},
+					...state.slice(id + 1),
+				];
+			}
+			return [
+				...state.slice(0, id),
+				{
+					...state[id],
+					hash: bugCalculateHash(state[id]),
+				},
+				...state.slice(id + 1),
+			];
 
 		default:
 			return state;

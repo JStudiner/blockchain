@@ -3,7 +3,7 @@ import Modal from '../Modal';
 import '../Modal.css';
 import './Block.css';
 import { connect } from 'react-redux';
-import { change, checkConnect, checkChain } from '../actions';
+import { change, checkConnect, checkChain, mine } from '../actions';
 class Block extends React.Component {
 	constructor(props) {
 		super(props);
@@ -23,7 +23,6 @@ class Block extends React.Component {
 			this.props.currentBlock,
 			this.state.value
 		);
-		console.log(this.props.currentPeer);
 		this.props.checkChain(this.props.currentPeer.id);
 		this.props.checkConnect(this.props.currentPeer.id);
 	}
@@ -57,7 +56,19 @@ class Block extends React.Component {
 					<div onClick={this.handleSubmit} className="ui submit button">
 						Submit
 					</div>
-					<div className="ui button">Mine</div>
+					<div
+						className={`ui ${
+							this.props.currentBlock.valid === false ? 'negative' : 'positive'
+						} button`}
+						onClick={() => {
+							this.props.mine(
+								this.props.currentPeer.id,
+								this.props.currentBlock
+							);
+							this.props.checkChain(this.props.currentPeer.id);
+						}}>
+						Mine
+					</div>
 				</form>
 			</div>
 		);
@@ -86,8 +97,7 @@ class Block extends React.Component {
 			<div className="position: relative;">
 				<i
 					onClick={() => {
-						this.setState({ toggleModal: true });
-						console.log(this.props.currentBlock.valid);
+						this.toggleModal();
 					}}
 					className={`cube icon large ${
 						this.props.currentBlock.valid === true ? colors[0] : colors[1]
@@ -99,4 +109,4 @@ class Block extends React.Component {
 	}
 }
 
-export default connect(null, { change, checkConnect, checkChain })(Block);
+export default connect(null, { change, checkConnect, checkChain, mine })(Block);

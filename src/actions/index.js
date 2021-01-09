@@ -1,46 +1,17 @@
-const namesToChoose = [
-	'Bette',
-	'Letty',
-	'Remona',
-	'Lily',
-	'Maryanna',
-	'Terica',
-	'Meridith',
-	'Coletta',
-	'Dierdre ',
-	'Chrystal ',
-	'Mitsuko',
-	'Haley ',
-	'Amberly',
-	'Kristan',
-	'Cristin',
-	'Jennette',
-	'Pinkie ',
-	'Marcella ',
-	'Erasmo',
-	'Tamie',
-	'Elodia',
-	'Tonisha',
-	'Sherell ',
-	'Curt',
-	'Dina',
-	'Loyce',
-	'Melda',
-	'Barbera',
-	'Jenifer',
-	'Delia',
-];
-let count = 0;
+import { uniqueNamesGenerator, names } from 'unique-names-generator';
+
 export const fetchPeers = () => {
 	return {
 		type: 'FETCH_PEERS',
 	};
 };
-export const addPeer = () => {
-	count++;
+export const addPeer = (peerCount) => {
 	return {
 		type: 'ADD_PEER',
-		payload: { name: namesToChoose[count - 1], id: `peer${count}` },
+		payload: {
+			name: uniqueNamesGenerator({ dictionaries: [names] }),
+			id: `peer${peerCount + 1}`,
+		},
 	};
 };
 export const removePeer = (peer) => {
@@ -99,5 +70,12 @@ export const checkChain = (peerId) => {
 		payload: {
 			peerId,
 		},
+	};
+};
+export const mine = (peerId, block) => {
+	return {
+		type: 'MINE',
+		block,
+		peerId,
 	};
 };

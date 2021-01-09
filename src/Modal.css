@@ -4,7 +4,12 @@
 .block-comps {
 	padding-top: 10px;
 	padding-bottom: 10px;
+	padding-left: 1px;
+	padding-right: 1px;
 }
 .form-comp {
 	font-size: 10px;
+}
+.p-normal {
+	font-weight: normal;
 }

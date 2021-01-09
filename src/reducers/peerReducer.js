@@ -55,7 +55,6 @@ const peerReducer = (state = initialState, action) => {
 		case 'CHANGE_BLOCK':
 			console.log();
 			id = state.indexOf(action.payload.peer);
-			let x = 3;
 			return [
 				...state.slice(0, id),
 				{
@@ -85,6 +84,16 @@ const peerReducer = (state = initialState, action) => {
 				];
 			}
 			return [...state];
+		case 'MINE':
+			id = findWithAttr(state, action.peerId);
+			return [
+				...state.slice(0, id),
+				{
+					...state[id],
+					blockchain: blockchainReducer(state[id].blockchain, action),
+				},
+				...state.slice(id + 1),
+			];
 		default:
 			return state;
 	}
